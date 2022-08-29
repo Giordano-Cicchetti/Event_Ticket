@@ -1,0 +1,170 @@
+<nav>
+    <ul class="ul-nav-logo">
+        <li>
+            <div class="logo-image">
+                <a href="/">
+                <img src="/assets/Icon Doctor.png" alt="Example Image" class="img-fluid">
+                
+                </a>
+             </div>
+        </li>
+        <li>
+            <div  class="mylogo">
+                <a href="/">
+                <p> DOC2ME </p>
+                </a>
+            </div>
+        </li>
+    </ul>
+    <ul class="ul-nav">
+        <li>
+            <a href="/">Home</a>  
+        </li>
+        <li>
+        <!-- per il momento ho mappato servizi in /servizi poi vedremo -->
+            <a href="/servizi">Servizi</a>
+        </li>
+        <li>
+            <a href="/team">Il team</a>
+        </li>
+        <li>
+            <a href="/contatti">Contatti</a>
+        </li>
+        <li>
+            <a href="/FAQ">FAQ</a>
+        </li>  
+        <li id="but">
+            <a href="/auth/login">Login</a>
+        </li>
+    </ul>
+    <button type="button"class="nav-mybutton" id="nav-mybutton" onclick="window.location.href='/auth/login'">login</button>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div> 
+</nav>  
+
+
+<main>
+     <div class="container">
+         
+         <div class="row py-5 mt-4 align-items-center">
+             
+             <div class="col-md-5 pr-lg-5 mb-5 mb-md-0 log-div">
+                 
+                 <h2 style="color:#04044c; font-weight: bold; text-align: center; margin-top: -15%;">Accedi come utente DOC2ME</h2>
+                 
+             </div>
+             
+             
+             <div class="col-md-7 col-lg-5 ml-auto login">
+                 
+                  
+                  <form action="/auth/login" method="POST">
+                     
+                     <div class="row ">
+     
+                         
+     
+                         <!-- Email Address -->
+                         <div class="input-group col-lg-12 mb-4">
+                             
+                             <input type="email" id="email" name="email" class="form-control bg-white border-left-0 border-md" placeholder="Enter Email" required autofocus/>
+                             
+                             
+                         </div>
+     
+                         <!-- Password -->
+                         <div class="input-group col-lg-12 mb-4">
+                             
+                             
+                             <input type="password" id="password" name="password" class="form-control bg-white border-left-0 border-md"
+                  placeholder="Enter Password" required />
+                         </div>
+                         
+                         
+                         <!-- Submit Button -->
+                         <div class="form-group col-lg-12 mx-auto mb-0" style="margin-top:2%;">
+                             <br>
+                               
+                               <input type="hidden" id="role" name="role" value="User" />
+                               <button type="submit" class="nav-mybutton" style="width: 100%;height:5vh;">Login</button>
+                             
+                         </div>
+                         
+     
+                         <!-- Divider Text -->
+                         <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                             <div class="border-bottom w-100 ml-5"></div>
+                             <span class="px-2 small text-muted font-weight-bold text-muted">oppure</span>
+                             <div class="border-bottom w-100 mr-5"></div>
+                         </div>
+     
+                         
+                            
+                         <!-- Already Registered -->
+                         <div class="text-center w-100" >
+                         <br>
+                             <p class="text-muted font-weight-bold">Sei un Manager? <br><a href="/auth/loginManager" class="text-primary ml-2">Clicca qui per effettuare il login</a></p>
+                             <p class="text-muted font-weight-bold">Sei un Admin? <br><a href="/auth/loginAdmin" class="text-primary ml-2">Clicca qui per effettuare il login</a></p>
+                             <p class="text-muted font-weight-bold">Non hai un account come utente? <br><a href="/auth/register" class="text-primary ml-2">Clicca qui per registrati su Event Ticket</a></p>
+                         </div>
+                         
+                             
+                         
+     
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+</main>
+<footer class=" footer">
+     <div class="container-footer">
+         <div class="row-footer">
+             <div class="footer-col">
+                 <h4>Home</h4>
+                 <ul class="ul-footer">
+                     <li><a href="../sos.html">go</a></li>
+                     <li><a href="../servizi.html">come funziona</a></li>
+                     <li><a href="../team.html">il team</a></li>
+                 </ul>
+             </div>
+             <div class="footer-col">
+                 <h4>team</h4>
+                 <ul class="ul-footer">
+                     <li><a href="../team.html">i nostri medici</a></li>
+                 </ul>
+             </div>
+             <div class="footer-col">
+                 <h4>Servizi</h4>
+                 <ul class="ul-footer">
+                     <li><a href="../disponibilita.html">le visite</a></li>
+                     <li><a href="../servizi.html">tariffe</a></li>
+                     
+                 </ul>
+             </div>
+             <div class="footer-col">
+                 <h4>contratti</h4>
+                 <ul class="ul-footer">
+                     <li><a href="../contatti.html">informazioni</a></li>
+                     <li><a href="../contatti.html">lavora con noi</a></li>
+                 </ul>
+             </div>
+             <div class="footer-col">
+                 <h4>FAQ</h4>
+                 <ul class="ul-footer">
+                     <li><a href="#">terms</a></li>
+                     <li><a href="#">privacy policy</a></li>
+                 </ul>
+             </div>
+             <div class="footer-col">
+                 <h4>dove siamo</h4>
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3542.859591124094!2d12.460394874597359!3d41.91713546609034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f60f31b74c16d%3A0xeb24764bd52036eb!2sVia%20Oslavia%2C%2014%2C%2000195%20Roma%20RM!5e0!3m2!1sit!2sit!4v1619522626225!5m2!1sit!2sit" width="100%" height="50%" style="border:0;" allowfullscreen="" loading="eager"></iframe>
+             </div>
+             
+         </div>
+     </div>
+</footer>
+

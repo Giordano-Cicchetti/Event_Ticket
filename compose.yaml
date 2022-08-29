@@ -1,0 +1,52 @@
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - '2717:27017'
+    networks:
+      internal:
+        ipv4_address: 172.16.230.9
+    volumes:
+      - db_auth:/data/db
+      - db_auth:/data/configdb
+
+  auth1:
+    restart: on-failure
+    build: ./auth
+    hostname: auth1
+    ports:
+      - '81:3006'
+    networks:
+      internal:
+        ipv4_address: 172.16.230.10
+  #auth2:
+   # restart: on-failure
+    #build: ./auth
+    #hostname: auth2
+    #ports:
+    #  - '82:5000'
+  nginx:
+    build: ./nginx
+    ports:
+    - '80:80'
+    environment:
+      - AUTH_IP=172.16.230.10:3006
+    networks:
+      internal:
+        ipv4_address: 172.16.230.11
+    depends_on:
+    - auth1
+    #- auth2
+
+networks:
+  internal:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.230.0/24"
+
+volumes:
+  db_auth:
+  
+
