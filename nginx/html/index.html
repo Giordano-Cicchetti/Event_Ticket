@@ -1,43 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+   
+    <title>Doc2me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="application.css">
+   
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/secure-icon.png" />
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-    <!-- Icons CDN -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/761d42c757.js" crossorigin="anonymous"></script>
-    <title>NodeJS Auth App</title>
-</head>
-
-<body>
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-6 m-auto">
-                <div class="card card-body text-center">
-                    <h1><img src="../../assets/secure-icon.png" alt="icon" width="20%" /></h1>
-                    <p>Login to an existing account or register</p>
-                    <a href="/auth/login" class="btn btn-primary btn-block">Login</a>
-                    <a href="/auth/register" class="btn btn-secondary btn-block mb-2">Register</a>
+    <body>
+        <nav>
+            <ul class="ul-nav-logo">
+                
+                    <div class="logo-image">
+                        <img src="images/event-2.png"  alt="Example Image" class="img-fluid">
+                     </div>
+                
+                <li>
+                    <div  class="mylogo">
+                    <p><b> EVENTICKET </b></p>
+                     </div>
+                </li>
+            </ul>
+            <ul class="ul-nav">
+                <li>
+                    <a  href="/" class="this"> Home</a>
+                </li>
+                <li>
+                    <a href="events.html">Eventi</a>
+                </li>
+                <li>
+                    <a href="contacts.html" >Contatti</a>
+                </li>
+                <li><a href="faq.html">FAQ</a>
+                </li>  
+                <li id="but">
+                    <a>Login</a>
+                </li>
+            </ul>
+            <button type="button"class="nav-mybutton" id="nav-mybutton" onclick="window.location.href='<%= user_session_path%>'">login</button>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div> 
+        </nav>  
+    
+        <main class="home">
+            <div style="background: linear-gradient( #b1c9ce, white) ">
+                <div class="urgenza-flex container">
+                    <div style="margin-right: 8%; margin-top: 14.4%;">
+                        <img src="images/event.png" class="img-logo" style="width:80%; max-width:400px;" id="im">
+                        
+                    </div>
+                    <div class="father-urgenza" id="father-sos">
+                        <br><br>
+                        <h1 class="son-urgenza"> Scopri i nostri eventi! </h1>
+                    </div>
+                    <div  class="urgenza-text" >
+                            Acquista un biglietto o preordinalo qua tramite il tuo account. <br>
+                                Scopri i servizi di EvenTicket!
+                    </div>
+                    
+                        
+                    
+                    
+                </div>
+                <br>
+                <div  class="container" style="border-top: solid; border-bottom: solid; border-color: #04044c;" >
+                    <h2 id="h2-home">Con EvenTicket acquisti un biglietto per un evento in meno di un minuto!</h2>
                 </div>
             </div>
-        </div>
-    </div>
+            <div id="guida">
+                <div class="cards-home clearfix" >
+                    <div class="card-home">
+                        <div class="card__copy">
+                            <h2>Crea un account</h2> <br>
+                            <p >
+                               Apri un account su EventTicket.<br>
+                                Dovrai solo compilare un rapido form per essere immediatamente un utente del sito o un manager per poter pubblicare i tuoi eventi.
+                            </p>
+                            <img src="images/user.png" alt="Example Image" style="width:33%;">
+                             
+                            
+                        </div>
+                    </div>
+                    <div class="card-home">
+                        <div class="card__copy">
+                            <h2>Scegli un evento che ti interessa</h2> <br>
+                            <p>
+                                Vedi fra gli eventi proposti nel sito e scegli quello che più ti interessa.<br> La piattaforma pertanto permette
+                                di poter scoprire tutti i principali eventi a Roma nei prossimi giorni!
+    
+                            </p>
+                            <img src="images/event-3.png" alt="Example Image" style="width:33%; padding-bottom:1%;">
+                            
+                        </div>
+                    </div>
+                    <div class="card-home">
+                        <div class="card__copy">
+                            <h2>Acquista una prevendita</h2> <br>
+                            <p>
+                                EvenTicket offre la possibilità di prenotare prevendite per gli eventi proposti!<br>
+                                Riservati la tua prevendita e paga direttamente al locale o al luogo
+                            </p>
+                            <img src="images/presale.png" alt="Example Image" style="width:33%; padding-bottom:1%;">
+                     
+                        </div>
+                    </div>
+                    <div class="card-home">
+                        <div class="card__copy">
+                            <h2>Acquista un biglietto</h2> <br>
+                            <p>
+                                EvenTicket offre la possibilità di acquistare biglietti per gli eventi proposti!<br>
+                                EventTicket permette di effettuare pagamenti online.
+                            </p> 
+                            <img src="images/costi.png" alt="Example Image" style="width:33%;">
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-</body>
-
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+    
+           
+            
+        </main>
+        <footer class="footer">
+            <div class="container-footer">
+                <div class="row-footer">
+                    <div class="footer-col">
+                        <h4>Home</h4>
+                        <ul class="ul-footer">
+                            <li><a href="servizi.html">come funziona</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>team</h4>
+                        <ul class="ul-footer">
+                            <li><a href="team.html">gli eventi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Servizi</h4>
+                        <ul class="ul-footer">
+                            <li><a href="disponibilita.html">i biglietti</a></li>
+                            
+                            
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>contatti</h4>
+                        <ul class="ul-footer">
+                            <li><a href="contatti.html">informazioni</a></li>
+                            <li><a href="contatti.html">lavora con noi</a></li>
+    
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>FAQ</h4>
+                        <ul class="ul-footer">
+                            <li><a href="#">terms</a></li>
+                            <li><a href="#">privacy policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>dove siamo</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d190029.01772997633!2d12.395914609643345!3d41.9099859745729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6196f9928ebb%3A0xb90f770693656e38!2sRoma%20RM!5e0!3m2!1sit!2sit!4v1661880765501!5m2!1sit!2sit" width="100%" height="50" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="jquery.js"></script>
+        <script src="slide.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="index.js"></script>
+        <script src="sos.js"></script>
+        <script src="opacita.js"></script>
+        
 </html>
