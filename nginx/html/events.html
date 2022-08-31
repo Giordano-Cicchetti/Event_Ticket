@@ -2,18 +2,18 @@
 <html>
   <head>
    
-    <title>Doc2me</title>
+    <title>Event Ticket</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="application.css">
+    <link rel="stylesheet" href="/assets/css/application.css">
 
   </head>
   <nav>
     <ul class="ul-nav-logo">
         
             <div class="logo-image">
-                <img src="images/event-2.png"  alt="Example Image" class="img-fluid">
+                <img src="assets/event-2.png"  alt="Example Image" class="img-fluid">
              </div>
         
         <li>
@@ -39,7 +39,7 @@
             <a>Login</a>
         </li>
     </ul>
-    <button type="button"class="nav-mybutton" id="nav-mybutton" onclick="window.location.href='<%= user_session_path%>'">login</button>
+    <button type="button"class="nav-mybutton" id="nav-mybutton" onclick="window.location.href='/auth/login'">login</button>
     <div class="burger">
         <div class="line1"></div>
         <div class="line2"></div>
@@ -52,7 +52,7 @@
     <h1 style="margin-top: 3%;">Servizi a tua disposizione</h1>
     <div class="container" >
         <p>
-            EvenTicket offre la possibilità ad utenti registrati di acquistare biglietti o prevendite di eventi a Roma.<br> 
+            EvenTicket offre la possibilit&agrave ad utenti registrati di acquistare biglietti o prevendite di eventi a Roma.<br> 
             Scopri in basso come partecipare a un evento!
         </p> 
     </div>
@@ -66,13 +66,13 @@
                 <h2 style="color:  #04044c;">&nbsp&nbspVedi gli eventi a Roma disponibili&nbsp&nbsp</h2><br>
             </div>
             <p> 
-                Guarda le disponibilità per gli eventi a Roma nei prossimi giorni.
+                Guarda le disponibilit&agrave per gli eventi a Roma nei prossimi giorni.
                 Scegli quello che più ti interessa e procedi per prenotare!
 
              </p>
             <div >
               
-                <button type="button"class="nav-mybutton" name="richiedistudio2" onclick="window.location.href='/users/sign_in'">gli eventi in città</button>
+                <button type="button"class="nav-mybutton" name="richiedistudio2" onclick="window.location.href='/users/sign_in'">gli eventi in citt&agrave</button>
                 <br><br>
             </div>
         </div>
@@ -113,7 +113,7 @@
         </div>
         
 </section>
-<img src="/images/event.png" alt="Example Image" style="margin-left:35%; width:25%;">
+<img src="/assets/event.png" alt="Example Image" style="margin-left:35%; width:25%;">
 
 
 
@@ -164,7 +164,7 @@
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-<script src="index.js"></script>
-<script src="popup.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/popup.js"></script>
 </body>
 </html>
