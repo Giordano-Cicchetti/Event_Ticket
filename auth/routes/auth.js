@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { ensureAuthenticated } = require('../config/checkAuth')
+const { ensureAdmin } = require('../config/checkAuth')
 
 //------------ Importing Controllers ------------//
 const authController = require('../controllers/authController')
@@ -24,6 +24,8 @@ router.get('/register', (req, res) => res.render('register'));
 //------------ Register POST Handle ------------//
 router.post('/register', authController.registerHandle);
 
+router.post('/registerManager', ensureAdmin,  authController.registerManagerHandle);
+
 //------------ Email ACTIVATE Handle ------------//
 router.get('/activate/:token', authController.activateHandle);
 
@@ -41,13 +43,13 @@ router.post('/login', authController.loginHandle,
     //funzione di callback
     function(req, res) {
         if(req.body.role=="User"){
-            res.redirect("/dashboard");
+            res.redirect("/profiloUser");
         }
         else if(req.body.role=="Admin"){
-            res.redirect("/dashAdmin");
+            res.redirect("/profiloAdmin");
         }
         else if(req.body.role=="Manager"){
-            res.redirect("/dashManager")
+            res.redirect("/profiloManager")
         }
 });
 

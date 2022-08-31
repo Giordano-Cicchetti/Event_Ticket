@@ -12,15 +12,15 @@ router.get('/', (req, res) => {
 });
 
 //------------ Dashboard Route ------------//
-router.get('/dashboard', ensureAuthenticated, (req, res) => res.render('dash', {
+router.get('/profiloUser', ensureAuthenticated, (req, res) => res.render('profiloUser', {
     name: req.user.name
 }));
 
-router.get('/dashAdmin', ensureAuthenticated, (req, res) => res.render('dashAdmin', {
+router.get('/profiloAdmin', ensureAuthenticated, (req, res) => res.render('profiloAdmin', {
     name: req.user.name
 }));
 
-router.get('/dashManager', ensureAuthenticated, (req, res) => res.render('dashManager', {
+router.get('/profiloManager', ensureAuthenticated, (req, res) => res.render('profiloManager', {
     name: req.user.name
 }));
 

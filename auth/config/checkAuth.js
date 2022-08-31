@@ -12,5 +12,15 @@ module.exports = {
             return next();
         }
         res.redirect('/dashboard');
+    },
+    ensureAdmin: function (req, res, next) {
+        if (req.isAuthenticated()) {
+            if(req.user.role=="Admin"){
+                return next();
+            }
+        }
+        req.flash('error_msg', 'You are not allowed to do this action!');
+        res.redirect('/auth/login');
     }
+
 };

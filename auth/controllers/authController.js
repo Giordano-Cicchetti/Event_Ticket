@@ -150,6 +150,77 @@ exports.registerHandle = (req, res) => {
     }
 }
 
+//------------ Register manager ------------//
+exports.registerManagerHandle = (req, res) => {
+    const { name, email, password, password2 } = req.body;
+    let errors = [];
+
+    //------------ Checking required fields ------------//
+    if (!name || !email || !password || !password2) {
+        errors.push({ msg: 'Please enter all fields' });
+    }
+
+    //------------ Checking password mismatch ------------//
+    if (password != password2) {
+        errors.push({ msg: 'Passwords do not match' });
+    }
+
+    //------------ Checking password length ------------//
+    if (password.length < 8) {
+        errors.push({ msg: 'Password must be at least 8 characters' });
+    }
+
+    if (errors.length > 0) {
+        res.render('profiloAdmin', {
+            errors,
+            name,
+            email,
+            password,
+            password2
+        });
+    } else {
+        //------------ Validation passed ------------//
+        User.findOne({ email: email }).then(user => {
+            if (user) {
+                //------------ User already exists ------------//
+                errors.push({ msg: 'Email ID already registered' });
+                res.render('profiloAdmin', {
+                    errors,
+                    name,
+                    email,
+                    password,
+                    password2
+                });
+            }
+            else {
+                    const newUser = new User({
+                        name,
+                        email,
+                        password
+                    });
+                    newUser.role= Role.Manager
+
+                    bcryptjs.genSalt(10, (err, salt) => {
+                        bcryptjs.hash(newUser.password, salt, (err, hash) => {
+                            if (err) throw err;
+                            newUser.password = hash;
+                            newUser
+                                .save()
+                                .then(user => {
+                                    req.flash(
+                                        'success_msg',
+                                        'Account activated. The Manager can now log in.'
+                                    );
+                                    res.redirect('/profiloAdmin');
+                                })
+                                .catch(err => console.log(err));
+                        });
+                    });
+            }
+        });
+    }
+}
+
 //------------ Activate Account Handle ------------//
 exports.activateHandle = (req, res) => {
     const token = req.params.token;
