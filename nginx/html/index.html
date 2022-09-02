@@ -7,47 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/application.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    
   </head>
 
     <body>
-        <nav>
-            <ul class="ul-nav-logo">
-                
-                    <div class="logo-image">
-                        <img src="assets/event-2.png"  alt="Example Image" class="img-fluid">
-                     </div>
-                
-                <li>
-                    <div  class="mylogo">
-                    <p><b> EVENTICKET </b></p>
-                     </div>
-                </li>
-            </ul>
-            <ul class="ul-nav">
-                <li>
-                    <a  href="/" class="this"> Home</a>
-                </li>
-                <li>
-                    <a href="events.html">Eventi</a>
-                </li>
-                <li>
-                    <a href="contacts.html" >Contatti</a>
-                </li>
-                <li><a href="faq.html">FAQ</a>
-                </li>  
-                <li id="but">
-                    <a href="/auth/login">Login</a>
-                </li>
-            </ul>
-            <button type="button"class="nav-mybutton" id="nav-mybutton" onclick="window.location.href='/auth/login'">login</button>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div> 
-        </nav>  
-    
+        <script type="text/javascript">
+            $(document).ready(function(e) {
+                $('#nav').load('/navbar');
+            });
+        </script>
+        <div id="nav"></div>
         <main class="home">
             <div style="background: linear-gradient( #b1c9ce, white) ">
                 <div class="urgenza-flex container">
