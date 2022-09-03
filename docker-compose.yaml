@@ -1,4 +1,4 @@
-
+version: '2.2'
 services:
   mongo:
     image: mongo
@@ -29,7 +29,7 @@ services:
   nginx:
     build: ./nginx
     ports:
-    - '80:80'
+      - '8080:80'
     environment:
       - AUTH_IP=172.16.230.10:3006
     networks:
@@ -38,6 +38,29 @@ services:
     depends_on:
     - auth1
     #- auth2
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    volumes:
+      - ./db_tickets:/data/db
+      - ./db_tickets:/data/configdb
+    networks:
+      internal:
+        ipv4_address: 172.16.230.12
+    ports:
+      - '2716:27017'
+
+  payments:
+    image: container_pagamento
+    build: ./payments
+    hostname: payments
+    networks:
+      internal:
+        ipv4_address: 172.16.230.13
+
+    ports:
+      - '4242:4242'
 
 networks:
   internal:
@@ -48,5 +71,6 @@ networks:
 
 volumes:
   db_auth:
+  db_tickets:
   
 
