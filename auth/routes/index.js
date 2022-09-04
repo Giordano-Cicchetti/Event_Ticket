@@ -10,10 +10,12 @@ const { authorize } = require('../config/authorize')
 const Role = require('../config/role');
 //------------ Welcome Route ------------//
 router.get('/', (req, res) => {
+    
     res.render('welcome');
 });
 
 router.get('/navbar', (req, res) => {
+    console.log(req);
     if (req.isAuthenticated()) {
         res.render('navbar',{name: req.user.name});
     }
