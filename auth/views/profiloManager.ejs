@@ -6,4 +6,83 @@
 <a href="/auth/logout" class="btn btn-secondary">Logout</a>
 
 
+
+
+<main>
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center ">
+            
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0 log-div">
+            <img src="/assets/Add User-amico.svg" alt="Example Image" class="img-fluid mb-3 d-none d-md-block" style="width: 100%; margin-left: 4%;">
+                <h2 style="color:#04044c; font-weight: bold; text-align: center;">Crea un Evento</h2>
+                
+            </div>
+            
+            <!-- Registeration Form -->
+            <div class="col-md-7 col-lg-5 ml-auto login">
+              <form action="/createEvent" method="POST" id="formevent" >
+                <%- include ("./messages") %>
+                    
+                    <div class="row ">
+    
+                        <!-- Name of the event -->
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <input type="name" id="name" name="name" class="form-control bg-white border-left-0 border-md" placeholder="Name of the event" style="text-align: start;"
+                         required/>   
+                        </div>
+    
+  
+    
+                        <!-- date of the event -->
+                        <div class="input-group col-lg-12 mb-4">
+                          <input type="date" id="date" name="date" class="form-control bg-white border-left-0 border-md " placeholder="date"
+               required />
+                        
+                         
+                        </div>
+    
+                        <!-- city -->
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <input type="text" id="city" name="city" class="form-control bg-white border-left-0 border-md" placeholder="Inserisci la città"
+                         required/>
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <!-- locale --> 
+                        <input type="text" id="locale" name="locale" class="form-control bg-white border-left-0 border-md" placeholder="Inserisci il locale"/>
+                        </div>
+
+                        <div class="input-group col-lg-12 mb-4">
+                        <!-- img --> 
+                        <input type="file" id="img" name="img" class="form-control bg-white border-left-0 border-md"/>
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                        <!-- descrizione --> 
+                        <textarea name="descrizione" form="formevent">Inserisci la descrizione dell'evento</textarea>
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                        <!-- locale --> 
+                        <input type="hidden" id="manager" name="manager" class="form-control bg-white border-left-0 border-md" placeholder="Inserisci il locale"
+              value="<%= name %>" />
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                        <!-- Submit Button -->
+                        <div class="form-group col-lg-12 mx-auto mb-0" style="margin-top:2%;">
+                            
+                       
+                        <button type="submit" class="nav-mybutton" style="width:100%;height:5vh;"">
+                          Crea
+                        </button>
+                      
+                        </div>
+                       
+                        
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+  </main>
 <%- include('./footer'); %>

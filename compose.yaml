@@ -1,4 +1,15 @@
 services:
+
+  monitor:
+      restart: on-failure
+      build: ./monitor
+      hostname: monitor
+      ports:
+        - '82:8080'
+      networks:
+        internal:
+          ipv4_address: 172.16.230.8
+
   mongo:
     image: mongo
     ports:
@@ -9,6 +20,29 @@ services:
     volumes:
       - db_auth:/data/db
       - db_auth:/data/configdb
+  
+  mongo_event:
+    image: mongo
+    ports:
+      - '2718:27017'
+    networks:
+      internal:
+        ipv4_address: 172.16.230.16
+    volumes:
+      - db_events:/data/db
+      - db_events:/data/configdb
+
+  
+  
+  event:
+    restart: on-failure
+    build: ./event
+    hostname: event1
+    ports:
+      - '82:3007'
+    networks:
+      internal:
+        ipv4_address: 172.16.230.15
 
   auth1:
     restart: on-failure
@@ -37,6 +71,7 @@ services:
     depends_on:
     - auth1
     #- auth2
+
 
   mongodb:
     image: mongo
@@ -71,5 +106,7 @@ networks:
 volumes:
   db_auth:
   db_tickets:
+  db_events:
+
   
 
