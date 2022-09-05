@@ -39,6 +39,10 @@ exports.createEventHandle = (req, res) => {
         res.redirect('/profiloManager');
     })
     .catch(err => console.log(err));
+
+
+
+    //codice o chiamata rabbitmq per notificare
     
     
 
@@ -46,8 +50,17 @@ exports.createEventHandle = (req, res) => {
 exports.updateEventHandle = (req, res) => {
 
 }
+
+
 exports.showEventsHandle = (req, res) => {
-    
+    //in base al parametro get popolare la variabile List event
+
+
+
+
+    //res.renmder("dhhdhdh",{
+        //list_event
+    //})
 }
 
 

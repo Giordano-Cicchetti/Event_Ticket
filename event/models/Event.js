@@ -28,6 +28,8 @@ const EventSchema = new mongoose.Schema({
     type: String
   }
 
+  // Tipo,num_big,prezz,Category
+
 }, { timestamps: true });
 
 const Event = mongoose.model('Event', EventSchema);
