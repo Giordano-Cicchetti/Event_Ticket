@@ -1,5 +1,16 @@
 
 services:
+
+  monitor:
+      restart: on-failure
+      build: ./monitor
+      hostname: monitor
+      ports:
+        - '82:8080'
+      networks:
+        internal:
+          ipv4_address: 172.16.230.8
+
   mongo:
     image: mongo
     ports:
@@ -38,6 +49,7 @@ services:
     depends_on:
     - auth1
     #- auth2
+
 
 networks:
   internal:
