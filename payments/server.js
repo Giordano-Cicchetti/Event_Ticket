@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/docs', express.static('./docs'));
 
-const YOUR_DOMAIN = 'http://localhost:4242';
+const YOUR_DOMAIN = 'http://localhost:8080';
 
 
 // prendi il parametro del nome della persona
@@ -41,9 +41,7 @@ app.get('/', (req,res) => {
 
 var tot_cost = 0;
 
-
-app.post('/prova', (req,res) => {
-  /*console.log(req.body.json)  =>  da trovare il comando per convertire il parametro in modo da poterlo usare a piacere*/
+app.post('/checkout', (req,res) => {
   tot_cost = (req.body.pr)*100;
   num_tick = (req.body.pl);
   res.render('checkout', {tot_cost, num_tick})

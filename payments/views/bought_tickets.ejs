@@ -2,53 +2,24 @@
 <html>
   <head>
    
-    <title>Doc2me</title>
+    <title>Event Tickets</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="d2m2.css">
+    <link rel="stylesheet" href="/assets/css/bought_tickets.css">
     <link rel="stylesheet" href="/assets/css/application.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   </head>
 
-    <body>
-        <nav>
-            <ul class="ul-nav-logo">
-                
-                    <div class="logo-image">
-                        <img src="images/event-2.png"  alt="Example Image" class="img-fluid">
-                     </div>
-                
-                <li>
-                    <div  class="mylogo">
-                    <p><b> EVENTICKET </b></p>
-                     </div>
-                </li>
-            </ul>
-            <ul class="ul-nav">
-                <li>
-                    <a  href="/" class="this"> Home</a>
-                </li>
-                <li>
-                    <a href="events.html">Eventi</a>
-                </li>
-                <li>
-                    <a href="contacts.html" >Contatti</a>
-                </li>
-                <li><a href="faq.html">FAQ</a>
-                </li>  
-                <li id="but">
-                    <a>Login</a>
-                </li>
-            </ul>
-            <button type="button"class="nav-mybutton" id="nav-mybutton" onclick="window.location.href='/'">login</button>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div> 
-        </nav>  
-        
+    <body style="background-image: linear-gradient(#b1c9ce,white);">
+        <script type="text/javascript">
+            $(document).ready(function(e) {
+                $('#nav').load('/navbar');
+            });
+        </script>
+        <div id="nav"></div>  
+
         <div class="container text-center" >
             <div class="row pt-5">
                 <div class="col-lg-8 mx-auto" style="text-align:center; color: #04044c; margin-top: 6%;">
@@ -88,14 +59,12 @@
                                 </tr>
                                 <% } %>
                             
-                            
                         </tbody>
                     </table>
                 </div>   
                 <!-- End -->
             </div>
         </div>
-
 
         <footer class="footer">
             <div class="container-footer">
