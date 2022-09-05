@@ -1,3 +1,4 @@
+version: "2.2"
 services:
 
   monitor:
@@ -5,7 +6,7 @@ services:
       build: ./monitor
       hostname: monitor
       ports:
-        - '82:8080'
+        - '83:8080'
       networks:
         internal:
           ipv4_address: 172.16.230.8
