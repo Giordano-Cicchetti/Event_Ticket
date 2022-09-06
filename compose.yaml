@@ -10,6 +10,15 @@ services:
       networks:
         internal:
           ipv4_address: 172.16.230.8
+  rabbit:
+      restart: on-failure
+      build: ./rabbit+consumer+producer+emailnotifications
+      hostname: rabbit
+      ports:
+        - '84:8081'
+      networks:
+        internal:
+          ipv4_address: 172.16.230.7
   #This is the container containing the DB of the users
   mongo:
     image: mongo
