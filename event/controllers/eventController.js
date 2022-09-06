@@ -20,11 +20,14 @@ const Event = require('../models/Event');
 
 //------------ Create event Handle ------------//
 exports.createEventHandle = (req, res) => {
-    const { name, date, city, locale, img, descrizione, manager} = req.body;
+    const { name, date, city, locale, img, descrizione, categoria, tipo,num_bigl,prezzo_bigl,manager} = req.body;
     console.log(req);
     console.log(req.body);
-    console.log(descrizione)
+    console.log(descrizione);
+    let prezzo= prezzo_bigl;
+    let bigl_rimanenti=num_bigl;
     
+
     const newEvent = new Event({
         name,
         descrizione,
@@ -32,7 +35,13 @@ exports.createEventHandle = (req, res) => {
         date,
         city,
         locale,
-        manager
+        manager,
+        categoria,
+        num_bigl,
+        prezzo,
+        tipo,
+        bigl_rimanenti
+        
     });
     newEvent.save().then(user => {
         
@@ -53,14 +62,110 @@ exports.updateEventHandle = (req, res) => {
 
 
 exports.showEventsHandle = (req, res) => {
-    //in base al parametro get popolare la variabile List event
+    
+    let tipo_ticket=req.query.event_type;
+    let cate=req.query.event_categ;
+    var cutoff = new Date();
+    if (req.query.event_type == "Biglietto" || req.query.event_type == "Prevendita" || req.query.event_type == "Informativo"){
+        //MongoClient.connect(url, function(err, db) {
+          //if (err) throw err;
+          //var dbo = db.db("eventi_db");
+          var q = {tipo:tipo_ticket,date: {$gte: cutoff}}
+          //dbo.collection("eventi").
+          Event.find(q).then(events=>{//toArray(function(err, r){
+              //if (err) throw err;
+              //db.close();
+              console.log(events);
+              var r=events;
+              var dimens = r.length;
+              
+              if (dimens===0){
+                
+                //dbo.collection("eventi").
+                Event.find().then(events=>{//toArray(function(err, r){
 
-
-
-
-    //res.renmder("dhhdhdh",{
-        //list_event
-    //})
+                  //if (err) throw err;
+                  //db.close();
+                  var r=events
+                  dimens = r.length;
+                  a = []
+                  for (i=0; i<dimens;i++){
+                    a.push(r[i]._id.toString())
+                  }
+                  res.render('events', {r, dimens, a})
+                  
+                })
+              }
+              else{
+                a = []
+                for (i=0; i<dimens;i++){
+                  a.push(r[i]._id.toString())
+                }
+                res.render('events', {r, dimens, a})
+              }
+          })
+      //}.bind({tipo:req.query.event_type}));
+    }
+    else{
+        if(req.query.event_categ){
+          //console.log(req.query.event_categ);
+          //MongoClient.connect(url, function(err, db) {
+            //if (err) throw err;
+            //var dbo = db.db("eventi_db");
+            var q = {categoria:cate , date: {$gte: cutoff}}
+            //dbo.collection("eventi").
+            Event.find(q).then(events=>{//toArray(function(err, r){
+                //if (err) throw err;
+                //db.close();
+                r=events;
+                var dimens = events.length;
+                
+                if (dimens===0){
+                  
+                  //dbo.collection("eventi").
+                  Event.find().then(events=>{//toArray(function(err, r){
+                    //if (err) throw err;
+                    //db.close();
+                    var r=events;
+                    dimens = r.length;
+                    a = []
+                    for (i=0; i<dimens;i++){
+                      a.push(r[i]._id.toString())
+                    }
+                    res.render('events', {r, dimens, a})
+                    
+                  })
+                }
+                else{
+                  a = []
+                  for (i=0; i<dimens;i++){
+                    a.push(r[i]._id.toString())
+                  }
+                  res.render('events', {r, dimens, a})
+                }
+            })
+        //}.bind({cate:req.query.event_categ}));
+        }
+        else{
+              //MongoClient.connect(url, function(err, db) {
+                //if (err) throw err;
+                //var dbo = db.db("eventi_db");
+                //dbo.collection("eventi").
+                Event.find().then(events=>{//toArray(function(err, r){
+                    //if (err) throw err;
+                    //db.close();
+                    var r=events;
+                    var dimens = r.length;
+                    a = []
+                    for (i=0; i<dimens;i++){
+                      a.push(r[i]._id.toString())
+                    }
+                    res.render('events', {r, dimens, a})
+                });
+              //});
+        }
+    }
+      
 }
 
 

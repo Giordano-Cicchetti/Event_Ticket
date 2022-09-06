@@ -26,9 +26,23 @@ const EventSchema = new mongoose.Schema({
   },
   manager:{
     type: String
+  },
+  categoria:{
+    type: String
+  },
+  num_bigl:{
+    type: Number
+  },
+  prezzo:{
+    type: Number
+  },
+  tipo:{
+    type: String
+  },
+  bigl_rimanenti:{
+    type:Number
   }
 
-  // Tipo,num_big,prezz,Category
 
 }, { timestamps: true });
 

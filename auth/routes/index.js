@@ -35,7 +35,8 @@ router.get('/profiloAdmin', ensureAdmin, (req, res) => res.render('profiloAdmin'
 }));
 
 router.get('/profiloManager', ensureManager, (req, res) => res.render('profiloManager', {
-    name: req.user.name
+    name: req.user.name ,
+    managerID: req.user._id.toString()
 }));
 
 router.get('/grant_Auth', authController.grantAuth);
@@ -46,6 +47,14 @@ router.get('/authorizeManager', (req, res) => authorize(Role.Manager,req,res));
 
 router.get('/authorizeAdmin', (req, res) => authorize(Role.Admin,req,res));
 
-
+router.get('getinfo',(req,res)=>{
+    if(req.isAuthenticated()){
+        var user=req.user;
+        res.status(200).send('User: '+user);
+    }
+    else{
+        res.status(401);
+    }
+})
 
 module.exports = router;

@@ -1,6 +1,6 @@
 version: "2.2"
 services:
-
+  #This is the container for Management and Monitoring service
   monitor:
       restart: on-failure
       build: ./monitor
@@ -10,7 +10,7 @@ services:
       networks:
         internal:
           ipv4_address: 172.16.230.8
-
+  #This is the container containing the DB of the users
   mongo:
     image: mongo
     ports:
@@ -21,7 +21,7 @@ services:
     volumes:
       - db_auth:/data/db
       - db_auth:/data/configdb
-  
+  #This is the container containing the DB of the Events
   mongo_event:
     image: mongo
     ports:
@@ -33,8 +33,7 @@ services:
       - db_events:/data/db
       - db_events:/data/configdb
 
-  
-  
+  #This is the container for the Event Service
   event:
     restart: on-failure
     build: ./event
@@ -45,6 +44,7 @@ services:
       internal:
         ipv4_address: 172.16.230.15
 
+  #This is the container for the Authentication and Authorization service
   auth1:
     restart: on-failure
     build: ./auth
@@ -60,6 +60,8 @@ services:
     #hostname: auth2
     #ports:
     #  - '82:5000'
+  
+  #This is the container containing for the API Gateway
   nginx:
     build: ./nginx
     ports:
@@ -73,7 +75,7 @@ services:
     - auth1
     #- auth2
 
-
+  #This is the container containing the DB of the Tickets
   mongodb:
     image: mongo
     container_name: mongodb
@@ -86,6 +88,7 @@ services:
     ports:
       - '2716:27017'
 
+  #This is the container for the Payments Service
   payments:
     image: container_pagamento
     build: ./payments

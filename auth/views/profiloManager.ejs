@@ -28,7 +28,7 @@
                         <!-- Name of the event -->
                         <div class="input-group col-lg-12 mb-4">
                         
-                        <input type="name" id="name" name="name" class="form-control bg-white border-left-0 border-md" placeholder="Name of the event" style="text-align: start;"
+                        <input type="name" id="name" name="name" class="form-control bg-white border-left-0 border-md" placeholder="Nome dell'evento" style="text-align: start;"
                          required/>   
                         </div>
     
@@ -36,7 +36,7 @@
     
                         <!-- date of the event -->
                         <div class="input-group col-lg-12 mb-4">
-                          <input type="date" id="date" name="date" class="form-control bg-white border-left-0 border-md " placeholder="date"
+                          <input type="datetime-local" id="date" name="date" class="form-control bg-white border-left-0 border-md " placeholder="Data Evento"
                required />
                         
                          
@@ -56,16 +56,72 @@
 
                         <div class="input-group col-lg-12 mb-4">
                         <!-- img --> 
-                        <input type="file" id="img" name="img" class="form-control bg-white border-left-0 border-md"/>
+                        <input type="file" id="img" name="img" class="form-control bg-white border-left-0 border-md" placeholder="Carica un'immagine"/>
                         </div>
                         <div class="input-group col-lg-12 mb-4">
                         <!-- descrizione --> 
                         <textarea name="descrizione" form="formevent">Inserisci la descrizione dell'evento</textarea>
                         </div>
                         <div class="input-group col-lg-12 mb-4">
+                          <fieldset>
+                            <legend>Categoria Evento</legend>
+                            <select name="categoria" >
+                            <option value="Musica" selected="selected">Musica </option>
+                            <option value="Spettacolo">Spettacolo </option>
+                            <option value="Cultura">Cultura </option>
+                            <option value="Sport">Sport </option>
+                            <option value="Cinema">Cinema </option>
+                            <option value="Discoteca">Discoteca </option>
+                            </select>
+                          </fieldset>   
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                          <fieldset>
+                            <legend>Tipologia Evento</legend>
+                            Informativo <input type="radio" name="tipo"  value="Informativo" /><br/>
+                            Con Prevendita <input type="radio" name="tipo" value="Prevendita"/><br/>
+                            Con Biglietto <input type="radio" name="tipo" value="Biglietto"/><br/>
+                          </fieldset>
+                        </div>
+                        <script>
+                        $( document ).ready(function() {
+                          $('#gruppo_nascosto').hide();
+                        });
+                        </script>
+                        <div id="gruppo_nascosto">
+                          <div class="input-group col-lg-12 mb-4">
+                            Numero Biglietti/prevendite
+                            <input type="number" id="num_bigl" name="num_bigl" class="form-control bg-white border-left-0 border-md"/>
+                          </div>
+                          <div class="input-group col-lg-12 mb-4">
+                            Prezzo singolo/a Biglietto/Prevendita
+                            <input type="number" id="prezzo_bigl" name="prezzo_bigl" class="form-control bg-white border-left-0 border-md"/>
+                          </div>
+                        </div>
+
+                        <script>
+                          $("input[name='tipo']").change(function() {
+                            if (($(this).val() == "Prevendita") || $(this).val() == "Biglietto" ) {
+                              $('#gruppo_nascosto').show();
+                              $('#num_bigl').attr('required', '');
+                              $('#num_bigl').attr('data-error', 'This field is required.');
+                              $('#prezzo_bigl').attr('required', '');
+                              $('#prezzo_bigl').attr('data-error', 'This field is required.');
+                            } else {
+                              $('#gruppo_nascosto').hide();
+                              $('#num_bigl').removeAttr('required');​​​​​
+                              $('#num_bigl').removeAttr('data-error');
+                              $('#prezzo_bigl').removeAttr('required');​​​​​
+                              $('#prezzo_bigl').removeAttr('data-error');
+                            }
+                          });
+    
+                        </script>
+
+                        <div class="input-group col-lg-12 mb-4">
                         <!-- locale --> 
                         <input type="hidden" id="manager" name="manager" class="form-control bg-white border-left-0 border-md" placeholder="Inserisci il locale"
-              value="<%= name %>" />
+              value="<%= managerID %>" />
                         </div>
                         <div class="input-group col-lg-12 mb-4">
                         <!-- Submit Button -->
