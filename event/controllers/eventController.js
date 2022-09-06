@@ -62,7 +62,7 @@ exports.updateEventHandle = (req, res) => {
 
 
 exports.showEventsHandle = (req, res) => {
-    
+  
     let tipo_ticket=req.query.event_type;
     let cate=req.query.event_categ;
     var cutoff = new Date();
