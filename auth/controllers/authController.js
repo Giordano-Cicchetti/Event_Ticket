@@ -505,3 +505,19 @@ exports.grantAuth = (req,res) => {
         res.status(401).send('Status: KO')
     }
 }
+
+exports.setPreferenza= (req,res) => {
+    var user_req=req.user;
+    var {preferenza}= req.body
+    console.log(user_req.email)
+    console.log(preferenza)
+
+    User.updateOne({email:user_req.email}, { $set: { preferenza: preferenza } }).then(user=>{
+        req.flash(
+            'success_msg',
+            'Preferenza Salvata.'
+        );
+        res.redirect('/profiloUser');
+    });
+
+}

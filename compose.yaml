@@ -10,6 +10,26 @@ services:
       networks:
         internal:
           ipv4_address: 172.16.230.8
+
+  rabbit_producer:
+      restart: on-failure
+      build: ./rabbit_producer
+      hostname: rabbit_producer
+      ports:
+        - '84:8081'
+      networks:
+        internal:
+          ipv4_address: 172.16.230.7
+
+  rabbit_consumer:
+      restart: on-failure
+      build: ./rabbit_consumer
+      hostname: rabbit_consumer
+      ports:
+        - '85:8082'
+      networks:
+        internal:
+          ipv4_address: 172.16.230.6
   #This is the container containing the DB of the users
   mongo:
     image: mongo
@@ -80,8 +100,8 @@ services:
     image: mongo
     container_name: mongodb
     volumes:
-      - ./db_tickets:/data/db
-      - ./db_tickets:/data/configdb
+      - db_tickets:/data/db
+      - db_tickets:/data/configdb
     networks:
       internal:
         ipv4_address: 172.16.230.12

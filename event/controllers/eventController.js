@@ -3,6 +3,7 @@ const bcryptjs = require('bcryptjs');
 const multer  = require('multer');
 const fs = require("fs");
 const path = require('path');
+const https = require('http');
 var upload = multer({ storage: storage })
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -44,8 +45,29 @@ exports.createEventHandle = (req, res) => {
         
     });
     newEvent.save().then(user => {
-        
-        res.redirect('/profiloManager');
+      const options = {
+        hostname: 'rabbit_producer',
+        port: 8081,
+        path: '/produce?interest='+categoria+"&name_event="+encodeURIComponent(name),
+        method: 'GET',
+      };
+      const requ = https.request(options, res => {
+        console.log(`statusCode: ${res.statusCode}`);
+      
+        res.on('data', d => {
+          console.log(d);
+        });
+      });
+      
+      requ.on('error', error => {
+        console.error(error);
+      });
+      
+      requ.end();
+      
+
+
+      res.redirect('/profiloManager');
     })
     .catch(err => console.log(err));
 
