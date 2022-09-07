@@ -109,10 +109,10 @@
                               $('#prezzo_bigl').attr('data-error', 'This field is required.');
                             } else {
                               $('#gruppo_nascosto').hide();
-                              $('#num_bigl').removeAttr('required');​​​​​
-                              $('#num_bigl').removeAttr('data-error');
-                              $('#prezzo_bigl').removeAttr('required');​​​​​
-                              $('#prezzo_bigl').removeAttr('data-error');
+                              $('#num_bigl').prop('required',false);
+                              
+                              $('#prezzo_bigl').prop('required',false);
+                              
                             }
                           });
     

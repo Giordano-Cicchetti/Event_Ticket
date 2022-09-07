@@ -55,7 +55,7 @@ router.get('/Aevents',(req,res)=>{
     if(req.isAuthenticated()){
         console.log(req.query.toString());
         var user=req.user;
-        res.redirect("/events?name="+user.name+'&email='+user.email+'&role='+user.role+'&'+query);
+        res.redirect("/events?"+query+"&name="+user.name+'&email='+user.email+'&role='+user.role);
     }
     else{
         res.redirect("/events?"+query);
