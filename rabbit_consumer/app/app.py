@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 def send_simple_message(user,msg):
     message = Mail(
-        from_email=user,
+        from_email="carmignanifederico@gmail.com",
         to_emails=user,
         subject='EvenTicket notification',
         html_content='Ciao, EvenTicket ha appena pubblicato un evento che potrebbe interessarti! Guarda sul sito'+' '+str(msg)+"!"
@@ -33,23 +33,26 @@ def send_simple_message(user,msg):
     except Exception as e:
         print(e.message)
 
-def pdf_process_function(msg):
+def pdf_process_function(msg,method):
     print(" PDF processing")
     msg=str(msg,'utf-8')
     print(" [x] Received " + msg)
     #connetti al db
     #utenti query che interessa msg
-    #myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-    #mydb = myclient["mydatabase"]
-    #mycol = mydb["customers"]
-    #myquery = { "address": "Park Lane 38" }
-    #mydoc = mycol.find(myquery)
-    #for x in mydoc:
-        #print(x) # send
-    user="carmignanifederico@gmail.com"
-    send_simple_message(user,msg)
-    print("email sent!")
-    time.sleep(5) # delays for 5 seconds
+    myclient = pymongo.MongoClient("mongodb://172.16.230.9:27017/")
+    mydb = myclient["test"]
+    mycol = mydb["users"]
+    myquery = { "preferenza": method.routing_key }
+    print("connection ok")
+    mydoc = mycol.find(myquery)
+    print(mydoc)
+    for x in mydoc:
+        print(x)
+        user=x['email']
+        print(user)
+        send_simple_message(user,msg)
+        print("email sent!")
+        time.sleep(5) # delays for 5 seconds
     print(" PDF processing finished")
     return
     
@@ -69,7 +72,7 @@ if __name__ == "__main__":
     # Declare a queue
     # create a function which is called on incoming messages
     def callback(ch, method, properties, body):
-        pdf_process_function(body)
+        pdf_process_function(body,method)
         
         
     # set up subscription on the queue

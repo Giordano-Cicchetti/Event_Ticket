@@ -10,15 +10,17 @@ services:
       networks:
         internal:
           ipv4_address: 172.16.230.8
-  # rabbit_producer:
-  #    restart: on-failure
-  #     build: ./rabbit_producer
-  #     hostname: rabbit_producer
-  #     ports:
-  #       - '84:8081'
-  #     networks:
-  #       internal:
-  #         ipv4_address: 172.16.230.7
+
+  rabbit_producer:
+      restart: on-failure
+      build: ./rabbit_producer
+      hostname: rabbit_producer
+      ports:
+        - '84:8081'
+      networks:
+        internal:
+          ipv4_address: 172.16.230.7
+
   rabbit_consumer:
       restart: on-failure
       build: ./rabbit_consumer
