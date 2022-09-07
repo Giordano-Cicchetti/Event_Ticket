@@ -84,10 +84,13 @@ exports.updateEventHandle = (req, res) => {
 
 
 exports.showEventsHandle = (req, res) => {
-    
+  
     let tipo_ticket=req.query.event_type;
     let cate=req.query.event_categ;
     var cutoff = new Date();
+    let name= req.query.name;
+    let email= req.query.email;
+    let role= req.query.role;
     if (req.query.event_type == "Biglietto" || req.query.event_type == "Prevendita" || req.query.event_type == "Informativo"){
         //MongoClient.connect(url, function(err, db) {
           //if (err) throw err;
@@ -114,7 +117,7 @@ exports.showEventsHandle = (req, res) => {
                   for (i=0; i<dimens;i++){
                     a.push(r[i]._id.toString())
                   }
-                  res.render('events', {r, dimens, a})
+                  res.render('events', {r, dimens, a, name, email, role})
                   
                 })
               }
@@ -123,7 +126,7 @@ exports.showEventsHandle = (req, res) => {
                 for (i=0; i<dimens;i++){
                   a.push(r[i]._id.toString())
                 }
-                res.render('events', {r, dimens, a})
+                res.render('events', {r, dimens, a, name , email,role})
               }
           })
       //}.bind({tipo:req.query.event_type}));
@@ -154,7 +157,7 @@ exports.showEventsHandle = (req, res) => {
                     for (i=0; i<dimens;i++){
                       a.push(r[i]._id.toString())
                     }
-                    res.render('events', {r, dimens, a})
+                    res.render('events', {r, dimens, a, name, email,role})
                     
                   })
                 }
@@ -163,7 +166,7 @@ exports.showEventsHandle = (req, res) => {
                   for (i=0; i<dimens;i++){
                     a.push(r[i]._id.toString())
                   }
-                  res.render('events', {r, dimens, a})
+                  res.render('events', {r, dimens, a, name , email,role})
                 }
             })
         //}.bind({cate:req.query.event_categ}));
@@ -182,7 +185,7 @@ exports.showEventsHandle = (req, res) => {
                     for (i=0; i<dimens;i++){
                       a.push(r[i]._id.toString())
                     }
-                    res.render('events', {r, dimens, a})
+                    res.render('events', {r, dimens, a, name, email,role})
                 });
               //});
         }

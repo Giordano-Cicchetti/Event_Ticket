@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/navbar', (req, res) => {
-    console.log(req);
+    
     if (req.isAuthenticated()) {
         res.render('navbar',{name: req.user.name});
     }
@@ -48,15 +48,24 @@ router.get('/authorizeManager', (req, res) => authorize(Role.Manager,req,res));
 
 router.get('/authorizeAdmin', (req, res) => authorize(Role.Admin,req,res));
 
-router.get('getinfo',(req,res)=>{
+router.get('/Aevents',(req,res)=>{
+    query=req.query;
+    if (req.query.event_type) query="event_type="+req.query.event_type;
+    if(req.query.event_categ) query="event_categ="+req.query.event_categ;
     if(req.isAuthenticated()){
+        console.log(req.query.toString());
         var user=req.user;
-        res.status(200).send('User: '+user);
+        res.redirect("/events?name="+user.name+'&email='+user.email+'&role='+user.role+'&'+query);
     }
     else{
-        res.status(401);
+        res.redirect("/events?"+query);
     }
 })
 
+
+
+
+
 router.post('/setPreferenza', authController.setPreferenza)
+
 module.exports = router;
