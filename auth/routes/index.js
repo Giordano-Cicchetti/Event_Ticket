@@ -27,7 +27,8 @@ router.get('/navbar', (req, res) => {
 
 //------------ Dashboard Route ------------//
 router.get('/profiloUser', ensureUser ,  (req, res) => res.render('profiloUser', {
-    name: req.user.name
+    name: req.user.name,
+    preferenza: req.user.preferenza
 }));
 
 router.get('/profiloAdmin', ensureAdmin, (req, res) => res.render('profiloAdmin', {
@@ -57,4 +58,5 @@ router.get('getinfo',(req,res)=>{
     }
 })
 
+router.post('/setPreferenza', authController.setPreferenza)
 module.exports = router;
