@@ -9,5 +9,6 @@ const Role = require('../config/role');
 router.get('/events', eventController.showEventsHandle);
 router.post('/createEvent', eventController.createEventHandle);
 router.post('/single_event', eventController.singleEventHandle);
+router.get('/eventi_manager', eventController.showEventiManager);
 
 module.exports = router;

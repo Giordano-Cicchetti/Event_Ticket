@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.get('/navbar', (req, res) => {
     
     if (req.isAuthenticated()) {
-        res.render('navbar',{name: req.user.name});
+        res.render('navbar',{name: req.user.name,managerID: req.user._id.toString()});
     }
     else{ 
         res.render('navbar');
