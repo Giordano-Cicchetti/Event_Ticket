@@ -1,13 +1,6 @@
 <%- include('./navbar'); %>
 
 
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= name %>. Tu sei un Manager</p>
-<a href="/auth/logout" class="btn btn-secondary">Logout</a>
-
-
-
-
 <main>
     <div class="container">
         <div class="row py-5 mt-4 align-items-center ">
@@ -54,10 +47,7 @@
                         <input type="text" id="locale" name="locale" class="form-control bg-white border-left-0 border-md" placeholder="Inserisci il locale"/>
                         </div>
 
-                        <div class="input-group col-lg-12 mb-4">
-                        <!-- img --> 
-                        <input type="file" id="img" name="img" class="form-control bg-white border-left-0 border-md" placeholder="Carica un'immagine"/>
-                        </div>
+                        <input type="hidden" id="img" name="img" value="">
                         <div class="input-group col-lg-12 mb-4">
                         <!-- descrizione --> 
                         <textarea name="descrizione" form="formevent">Inserisci la descrizione dell'evento</textarea>

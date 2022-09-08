@@ -61,6 +61,30 @@ router.get('/Aevents',(req,res)=>{
         res.redirect("/events?"+query);
     }
 })
+router.get('/Aprenotazioni',(req,res)=>{
+    
+    if(req.isAuthenticated()){
+        console.log(req.query.toString());
+        var user=req.user;
+        res.redirect("/prenotazioni?email="+user.email);
+    }
+    else{
+        res.redirect("/auth/login");
+    }
+})
+
+router.get('/Aeventi_manager',(req,res)=>{
+    
+    if(req.isAuthenticated()){
+        console.log(req.query.toString());
+        var user=req.user;
+        var id=user._id.toString();
+        res.redirect("/eventi_manager?managerID="+id);
+    }
+    else{
+        res.redirect("/auth/login");
+    }
+})
 
 
 

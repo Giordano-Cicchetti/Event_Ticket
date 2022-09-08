@@ -35,9 +35,9 @@
         </li> 
         <li>
             <% if(typeof role !== 'undefined' && role == "User") { %>
-                <a  href="/profiloUser">Tickets</a>
+                <a  href="/Aprenotazioni">Tickets</a>
             <% } else if(typeof role !== 'undefined' && role == "Manager"){ %> 
-                <a  href="/eventi_manager?id=<%= managerID %>">Events</a>
+                <a  href="/Aeventi_manager">Events</a>
             <% } else{ %> 
                 
             <% } %>

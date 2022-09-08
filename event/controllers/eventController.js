@@ -218,7 +218,7 @@ exports.singleEventHandle = (req, res) => {
 
 exports.showEventiManager = (req, res) => {
   // perform query to take all managers events
-  var id_man=req.query.id;
+  var id_man=req.query.managerID;
   var events=[];
   var ObjectId = require('mongodb').ObjectId;
   let query = new ObjectId(id_man);

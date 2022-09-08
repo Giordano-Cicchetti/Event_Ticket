@@ -23,11 +23,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/docs', express.static('./docs'));
 
-const YOUR_DOMAIN = 'http://localhost:8080';
+const YOUR_DOMAIN = 'http://localhost';
 
 
 // prendi il parametro del nome della persona
-user = 'jaco@jaco.it'
+var user;
 
 // prendere json file
 const fs = require('fs');
@@ -82,7 +82,7 @@ app.post('/create-checkout-session', async (req, res) => {
   })
 
   const pric = await stripe.prices.create({
-    unit_amount: num_tick,
+    unit_amount: tot_cost,
     currency: 'eur',
     product: prod.id
   })
@@ -93,7 +93,7 @@ app.post('/create-checkout-session', async (req, res) => {
       {
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
         price: pric.id,
-        quantity: tot_cost,
+        quantity: num_tick,
       },
     ],
     mode: 'payment',
@@ -114,7 +114,7 @@ app.get('/return_tickets', (req,res) => {
   else {
     a = [];
     ind = 0;
-    var user = req.query.user_email; 
+    var user = user_email; 
     while(ind<num_tick){
       dd = new Date()
       h = dd.getHours();
@@ -139,15 +139,19 @@ app.get('/return_tickets', (req,res) => {
         })
       }.bind({t:a[i], us:user, eve_name:nome_event, eve_data:data_event, eve_city:city_event, eve_loc:locale_event}));
     }
-    var remaining_tickets = req.body.avaliable_event - req.body.num_tick;
+    var remaining_tickets = avaliable_event - num_tick;
     MongoClient.connect(url2, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("nome_db_eventi");
-      var query = {'_id':this.id_ev}
-      var setting = {'avaliable_ticket':this.rem_tick}
-      dbo.collection("nome_collezione_db_eventi").update({query},{$set:{setting}})
+        if (err) throw err;
+        var dbo = db.db("test");
+        var s = '6319b8959ebc1dcd7787c031';
+        var ObjectId = require('mongodb').ObjectId;
+        var query = new ObjectId(this.id_ev);
+        dbo.collection("events").updateOne({'_id':query}, {$set : {'bigl_rimanenti':this.rem_tick}}, function (err, respon) {
+          console.log(respon);
+          db.close();
+        })
 
-    }.bind({id_ev:id_event, rem_tick:remaining_tickets}));
+      }.bind({id_ev:id_event, rem_tick:remaining_tickets}));
 
     num_tick = 0
     res.render('success', {a, num_ticke})
@@ -155,9 +159,9 @@ app.get('/return_tickets', (req,res) => {
 })
 
 app.get('/return_prevendite', (req,res) => {
-  if (req.body.avaliable_event < req.body.num_tick){
+  if (req.query.avaliable_event < req.query.num_tick){
     /***messaggio di alert => numero di biglietti non disponibile***/
-    res.render('/')
+    res.redirect('/events')
   }
   else {
     num_tick = req.query.num_tick;
@@ -172,7 +176,7 @@ app.get('/return_prevendite', (req,res) => {
     
     console.log(user_email)
 
-    if (num_tick == 0 || user_email==""){
+    if (num_tick == 0 || user_email=="" || typeof user_email === 'undefined' || user_email === null){
 
       // redirect alla pagina di home
       // provo ad accedere alla pagina di ricevuta dei biglietti
@@ -207,17 +211,24 @@ app.get('/return_prevendite', (req,res) => {
         }.bind({t:a[i], us:user, eve_name:nome_event, eve_data:data_event, eve_city:city_event, eve_loc:locale_event}));
       }    
       var remaining_tickets = req.query.avaliable_event - req.query.num_tick;
+      console.log(`Rimangono ${remaining_tickets} tickets`)
+      console.log(typeof remaining_tickets)
       MongoClient.connect(url2, function(err, db) {
         if (err) throw err;
         var dbo = db.db("test");
-        var query = {'_id':this.id_ev}
-        var setting = {'avaliable_ticket':this.rem_tick}
-        dbo.collection("events").update({query},{$set:{setting}})
+        var s = '6319b8959ebc1dcd7787c031';
+        var ObjectId = require('mongodb').ObjectId;
+        var query = new ObjectId(this.id_ev);
+        dbo.collection("events").updateOne({'_id':query}, {$set : {'bigl_rimanenti':this.rem_tick}}, function (err, respon) {
+          console.log(respon);
+          db.close();
+        })
 
       }.bind({id_ev:id_event, rem_tick:remaining_tickets}));
       num_tick = 0
+      
       res.render('success', {a, num_ticke})
-      }
+    }
   }
 })
 
@@ -226,7 +237,7 @@ app.get('/return_prevendite', (req,res) => {
 app.get('/prenotazioni', (req,res) => {
 
   // perform query to take all user's tikets
-
+  var user_email= req.query.email;
   let r;
 
   tickets = [];
@@ -241,7 +252,7 @@ app.get('/prenotazioni', (req,res) => {
       db.close();
       var i = 0;
       while (r[i]){
-        if (user == r[i].utente){
+        if (user_email == r[i].utente){
           tickets.push(r[i])
         }
         else{
