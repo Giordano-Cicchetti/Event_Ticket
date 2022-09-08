@@ -34,7 +34,14 @@
             <% } %>
         </li> 
         <li>
-            <a  href="/prenotazioni">Tickets</a>
+            <% if(typeof role !== 'undefined' && role == "User") { %>
+                <a  href="/profiloUser">Tickets</a>
+            <% } else if(typeof role !== 'undefined' && role == "Manager"){ %> 
+                <a  href="/eventi_manager?id=<%= managerID %>">Events</a>
+            <% } else{ %> 
+                
+            <% } %>
+            
         </li>  
         <li id="but-logged">
             <a href="/auth/logout" class="btn btn-secondary">Logout</a>

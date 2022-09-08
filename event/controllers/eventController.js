@@ -211,7 +211,24 @@ exports.singleEventHandle = (req, res) => {
       res.render('/');
     }
     else {
-      res.render('single_event', {resqu,email});
+      res.render('single_event', {layout:false,resqu,email});
     }
   })
+}
+
+exports.showEventiManager = (req, res) => {
+  // perform query to take all managers events
+  var id_man=req.query.id;
+  var events=[];
+  var ObjectId = require('mongodb').ObjectId;
+  let query = new ObjectId(id_man);
+  var q = {manager:query};
+  Event.find(q).then(ress=>{
+    events=ress;
+    console.log(events);
+    console.log(events[0]);
+    console.log(events[0].name)
+    console.log(events[0].city)
+    res.render('eventi_manager', {layout: false,events},);
+  });
 }

@@ -1,22 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> -<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Evento</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/single_event.css">
+    </head>
 
+    <body>
+        <body id="body-home" style="overflow-x:hidden;"></body>
     <div style="display:flex; flex-direction:column-reverse; height:15vh; ">
         
     </div>
     <div class="fluid bio-name">
-       <h2 id="team-bio" style="margin-top: -300px;"><a href=team.html>Evento</a></h2>
-        <h1 class="bio-name-h1" ><%= resqu.name %></h1>
-        <div class="bio-img1 bio-img"><img src="index.png" style="position:absolute;border-radius: 50%;width: 280px; height: 280px;background-size: cover;     border: 2px solid #2e2e69;"></div>
+       <h2 id="team-bio" style="margin-top: -300px;">Evento</h2>
+        <div class="bio-img1 bio-img"><img src="/assets/event-2.png" style="position:absolute;border-radius: 50%;width: 280px; height: 280px;background-size: cover;     border: 2px solid #2e2e69;"></div>
     </div>
     <div>
         <div class="container bio-text">
         <div> 
            <br>
+               <h4>Nome Evento: </h4><h2><%= resqu.name %></h2><br>
                <h4>Categoria: </h4><h2><%= resqu.categoria %></h2><br>
                <h4>Città: </h4><h2><%= resqu.city %></h2><br>
                <h4>Locale: </h4><h2><%= resqu.locale %></h2><br>
                <h4>Data: </h4><h2><%= resqu.date.toLocaleDateString() %></h2><br>
                <h4>Ora: </h4><h2><%= resqu.date.toLocaleTimeString() %></h2><br>
-               <h4>Tipo di Biglietto: </h4><h2><%= resqu.tipo_ticket %></h2><br>
+               <h4>Tipo di Biglietto: </h4><h2><%= resqu.tipo %></h2><br>
                <h4>Descrizione Evento: </h4><h2><%= resqu.descrizione %></h2><br>
                <% if (resqu.tipo=="Biglietto")  {%>
                <h4>Prezzo per biglietto: </h4><h2><%= resqu.prezzo %></h2><br>
@@ -59,10 +77,13 @@
                    </form>
                <% } %>
                <div style="padding-bottom: 100px;">
-                   <a href="/" style="color:#2e2e69">&#8592 Back</a>
+                <button type="button"class="nav-mybutton" id="nav-mybutton" onclick="window.location.href='/events.html'" >Back</button>
                </div>
 
         </div>
     </div>
         </div>
     </div>
+    </body>
+</body>
+</html>
