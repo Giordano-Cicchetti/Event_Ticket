@@ -1,7 +1,6 @@
 # Event Ticket
 
 Project structure:
-```
 .
 ├── README.md
 ├── compose.yaml
@@ -12,10 +11,8 @@ Project structure:
 ├── rabbit_producer
 └── auth
 
-
-
 ## Project goals
-
+This is a project for Laboratory of Advanced Programming at Sapienza University of Rome by Brunetti Jacopo, Carmignani Federico, Cicchetti Giordano.
 The purpose of our project is to build a web application providing a set of services aimed at the management and proposals of events and distribution of tickets.
 The goal is provide to the users a way to discover events and buy or preorder tickets directly online. At the same time the application allows also the events’ managers to publish their events in order to promote them and eventually to give the possibility to sell tickets of the event through the website.
 
