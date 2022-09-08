@@ -16,6 +16,8 @@
         </div>
       </div>
       <form action="/create-checkout-session" method="POST">
+        <input type="hidden" name="tot_cost" value="<%= tot_cost %>">
+        <input type="hidden" name="num_tick" value="<%= num_tick %>">
         <button type="submit" id="checkout-button">Checkout</button>
       </form>
     </section>

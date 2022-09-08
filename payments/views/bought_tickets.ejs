@@ -52,9 +52,9 @@
                                 <tr>
                                     <td> <h6> <%= tickets[i].cod_tickets %> </h6> </td>
                                     <td> <h6> <%= tickets[i].evento %> </h6> </td>
-                                    <td> <h6> <%= tickets[i].data %> </h6> </td>
-                                    <td> <h6> <%= tickets[i].luogo %> </h6> </td>
-                                    <td> <h6> <%= tickets[i].tipo_ticket %> </h6> </td>
+                                    <td> <h6> <%= tickets[i].data.toString().substring(0, 15) %> </h6> </td>
+                                    <td> <h6> <%= tickets[i].city %> </h6> </td>
+                                    <td> <h6> <%= tickets[i].locality %> </h6> </td>
                                     
                                 </tr>
                                 <% } %>

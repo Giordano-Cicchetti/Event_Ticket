@@ -43,7 +43,9 @@
     <div style="display: flex;" class="logged-nav">
         <div style="margin-right: 10%; margin-top: 5%; color: #04044c; font-weight: bold;">    
             <span style="font-size:20px; text-transform:capitalize;"><%= name %></span>
-           <span  style="font-size:20px;text-transform:capitalize;"> <%= role %></span>
+            <% if (typeof role !== 'undefined') {%>
+            <span  style="font-size:20px;text-transform:capitalize;"> <%= role %></span>
+            <% } %>
             <span style="font-size:15px;">utente</span>
         </div>
         <div style=" margin-top: 5%" class="logged-nav">
