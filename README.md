@@ -3,19 +3,12 @@
 Project structure:
 .
 ├── README.md
-
 ├── compose.yaml
-
 ├── nginx
-
 ├── payments
-
 ├── event
-
 ├── rabbit_consumer
-
 ├── rabbit_producer
-
 └── auth
 
 ## Project goals
