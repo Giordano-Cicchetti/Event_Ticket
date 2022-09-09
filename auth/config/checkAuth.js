@@ -13,6 +13,8 @@ module.exports = {
         }
         res.redirect('/dashboard');
     },
+
+    
     ensureAdmin: function (req, res, next) {
         if (req.isAuthenticated()) {
             if(req.user.role=="Admin"){

@@ -1,15 +1,5 @@
 version: "2.2"
 services:
-  #This is the container for Management and Monitoring service
-  monitor:
-      restart: on-failure
-      build: ./monitor
-      hostname: monitor
-      ports:
-        - '83:8080'
-      networks:
-        internal:
-          ipv4_address: 172.16.230.8
 
   rabbit_producer:
       restart: on-failure
